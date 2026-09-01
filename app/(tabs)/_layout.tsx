@@ -5,10 +5,16 @@ import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import Login from '../Feature/login';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const [isLogedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  if(!isLogedIn){
+    return <Login/>
+
+  }
   return (
     <Tabs
       screenOptions={{
