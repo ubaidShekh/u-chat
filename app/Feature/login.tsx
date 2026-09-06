@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -19,7 +20,7 @@ export default function Login  (){
     <Image source={require('@/assets/images/logo.png')} style={styles.logo}/>
     <Text style={styles.username}> {user?.username} </Text>
 
-    <TouchableOpacity style={styles.login} activeOpacity={0.9}>
+    <TouchableOpacity style={styles.login} activeOpacity={0.9} onPress={() =>{router.push('/Feature/MainLogin')} }>
       <Text style={styles.loginText}>Log In</Text>
     </TouchableOpacity>
       <TouchableOpacity style={styles.switchAccount} activeOpacity={0.9}>

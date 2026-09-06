@@ -10,7 +10,7 @@ import Login from '../Feature/login';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
-  const [isLogedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [isLogedIn, setIsLoggedIn] = React.useState<boolean>(true);
   if(!isLogedIn){
     return <Login/>
 
