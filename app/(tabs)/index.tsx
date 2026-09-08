@@ -3,6 +3,7 @@ import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Octicons from '@expo/vector-icons/Octicons';
 import { StatusBar } from 'expo-status-bar';
+import React, { useRef } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
 
@@ -98,14 +99,31 @@ const posts = [
     caption: 'Nothing better than watching the sunset.',
   },
 ];
+const [showBars, setShowBars] = React.useState(true);
 
+const lastScrollY = useRef(0);
+
+const handleScroll = (event) => {
+  const currentY = event.nativeEvent.contentOffset.y;
+
+  if (currentY > lastScrollY.current && currentY > 50) {
+    // Down
+    setShowBars(false);
+  } else if (currentY < lastScrollY.current) {
+    // Up
+    setShowBars(true);
+  }
+
+  lastScrollY.current = currentY;
+};
 
   return (
   <>
   <StatusBar style="auto" />
 
   //header
- <View style={styles.titleContainer}>
+{showBars && (<>
+<View style={styles.titleContainer}>
   
   <Feather name="camera" size={24} color={iconColor} />
   <Image source={require('@/assets/images/title.png')} style={{width: 110, height: 30, alignSelf: 'center'}}/>
@@ -116,6 +134,7 @@ const posts = [
  
  </View>
   <View style={{height:0.5,backgroundColor:'#ccc',}}/>
+</>)}
 
 
 
@@ -125,6 +144,7 @@ data={posts}
 keyExtractor={(item) => item.id}
 showsVerticalScrollIndicator={false}
 bounces={false}
+onScroll={handleScroll}
 ListHeaderComponent={<>
   //stories
 <FlatList 
@@ -147,7 +167,7 @@ renderItem={({item}) => (
   )}
   <Text style={{ fontSize: 12, marginTop: 10 }}>{item.username}</Text>
   
-  
+  mess
 </View>
 
  <View style={{height:1,backgroundColor:'#bbb',}}/>
@@ -170,21 +190,31 @@ renderItem={({ item }) => (<>
 </View>
 
 </View>
-<AntDesign name="ellipsis" size={22} color="black" />
+<AntDesign name="ellipsis" size={22} color={iconColor} />
 
 </View>
 
-<View>
-<Octicons name="heart" size={24} color="black" />
-<AntDesign name="message" size={24} color="black" />
- <MaterialIcons name="send" size={24} color={iconColor} />
-</View>
+
 
 
 <Image source={{uri:item.image}} style={{height:400,width:'100%'}}/>
+
+<View style={{flexDirection:'row',justifyContent:'space-between',padding:10,alignItems:'center'}}>
+  <View style={{flexDirection:'row',gap:25,alignItems:'center'}}>
+<Octicons name="heart" size={24} color={iconColor} />
+<AntDesign name="message" size={24} color={iconColor} />
+ <MaterialIcons name="send" size={24} color={iconColor} />
+</View>
+<Feather name="bookmark" size={28} color={iconColor} />
+</View>
+
+
+<View style={{paddingHorizontal:10}}>
+  <Text>Liked by <Text style={{fontWeight:'600'}}>{item.likedBy}</Text> and <Text style={{fontWeight:'600'}}>{item.likes} others</Text></Text>
 <Text>{item.caption}</Text>
-<Text>{item.likes} likes</Text>
-<Text>Liked by {item.likedBy}</Text></View>
+</View>
+
+</View>
 </>)}
 />
 
