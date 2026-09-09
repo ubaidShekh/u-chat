@@ -5,7 +5,6 @@ import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Feather from '@expo/vector-icons/Feather';
 import { Image } from 'react-native';
 import Login from '../Feature/login';
@@ -38,7 +37,7 @@ export default function TabLayout() {
         name="Search"
         options={{
           title: 'Search',
-          tabBarIcon: ({ color }) => <EvilIcons name="search" size={34} color={color} />,
+          tabBarIcon: ({ color }) => <Feather name="search" size={27} color={color}/>,
           
         }}
       />
