@@ -39,6 +39,9 @@ const iconColor= "#666";
       iconColor: '#666',     
       title: 'Auto',
     },
+
+
+    
   ]
 
 
@@ -87,6 +90,50 @@ const explorePosts = [
     id: '10',
     image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
   },
+  {
+    id: '11',
+    image: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e',
+    multiple: true,
+  },
+  {
+    id: '12',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2',
+  },
+  {
+    id: '13',
+    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7',
+  },
+  {
+    id: '14',
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba',
+    multiple: true,
+  },
+  {
+    id: '15',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+    multiple: true,
+  },
+  {
+    id: '16',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9',
+  },
+  {
+    id: '17',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
+  },
+  {
+    id: '18',
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
+    multiple: true,
+  },
+  {
+    id: '19',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f',
+  },
+  {
+    id: '0',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
+  },
 ];
 
   return (
@@ -121,8 +168,10 @@ const explorePosts = [
       topBottun.map((item, index)=>(
         <>
        <TouchableOpacity 
-        style={{paddingHorizontal:15,borderWidth:0.5,borderColor:'#ccc',margin:5,flexDirection:'row',paddingVertical:'6',borderRadius:4}}
+       key={item.id}
+        style={{paddingHorizontal:15,borderWidth:0.5,borderColor:'#ccc',margin:5,flexDirection:'row',paddingVertical:'6',borderRadius:4,marginBottom:10}}
         activeOpacity={0.9}
+        
         >
      
        
@@ -141,13 +190,19 @@ const explorePosts = [
   data={explorePosts}
   numColumns={3}
   renderItem={({ item }) => (
+   
+   <>
+ 
     <Image
       source={{ uri: item.image }}
       style={{
         width: '33.33%',
         height: 125,
+       
       }}
     />
+   </>
+
   )}
 />
 </>
