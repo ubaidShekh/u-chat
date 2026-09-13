@@ -11,6 +11,7 @@ export default function Search() {
 
 
 const iconColor= "#666";
+
   const topBottun = [
     {
       id: '1',
@@ -44,8 +45,13 @@ const iconColor= "#666";
     
   ]
 
+  interface PostType{
+    id:string,
+    image:string,
+    multiple?:boolean
+  }
 
-const explorePosts = [
+const explorePosts:PostType[] = [
   {
     id: '1',
     image: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e',

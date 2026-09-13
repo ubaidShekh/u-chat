@@ -11,7 +11,27 @@ import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
 const  iconColor = '#666';
-const stories = [
+interface StoriesType {
+  id:string,
+  username:string,
+  image:string,
+  isYourStory?:boolean,
+  hasStory?:boolean,
+  isLive?:boolean,
+}
+
+interface PostType{
+      id: string,
+    username: string,
+    profileImage: string,
+    location: string,
+    image: string,
+    likes: number,
+    likedBy: string,
+    caption: string,
+}
+
+const stories:StoriesType[] = [
   {
     id: '1',
     username: 'Your Story',
@@ -65,7 +85,8 @@ const stories = [
   },
 ];
 
-const posts = [
+
+const posts:PostType[] = [
   {
     id: '1',
     username: 'joshua_l',
@@ -103,8 +124,9 @@ const [showBars, setShowBars] = React.useState(true);
 
 const lastScrollY = useRef(0);
 
-const handleScroll = (event) => {
-  const currentY = event.nativeEvent.contentOffset.y;
+const handleScroll = (event:number) => {
+{/*
+    const currentY = event.nativeEvent.contentOffset.y;
 
   if (currentY > lastScrollY.current && currentY > 50) {
     // Down
@@ -114,7 +136,7 @@ const handleScroll = (event) => {
     setShowBars(true);
   }
 
-  lastScrollY.current = currentY;
+  lastScrollY.current = currentY; */}
 };
 
   return (
@@ -144,7 +166,7 @@ data={posts}
 keyExtractor={(item) => item.id}
 showsVerticalScrollIndicator={false}
 bounces={false}
-onScroll={handleScroll}
+//onScroll={handleScroll}
 ListHeaderComponent={<>
   //stories
 <FlatList 
