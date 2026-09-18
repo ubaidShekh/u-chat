@@ -1,6 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 export default function TabTwoScreen() {
@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
     followers:834,
     following:162,
     name:'jacob West',
-    bio:'Digital goodies designer @pixsellz Everything is designed',
+    bio:'Digital goodies designer @pixsellz Everything is designed.',
     hightlight:[
       'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'
       ,'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
@@ -72,7 +72,52 @@ export default function TabTwoScreen() {
  renderItem={({item})=>(
   <>
   <View>
-    <Text>hdello from ubaid</Text>
+    <FlatList
+    data={profileData}
+    keyExtractor={(item)=>item.id.toString()}
+    renderItem={({item})=>(
+      <>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:10}}>
+      <View style={{padding:2,width:89.5,borderRadius:44.7,backgroundColor:'#ccc',}}>
+         <View style={{padding:2,width:86,borderRadius:43,backgroundColor:'#fff',}}>
+        <Image source={{uri:item.profileImage}} style={{height:80,width:80,borderRadius:40,alignItems:'center',alignContent:'center'}}/>
+       </View>
+      </View>
+
+      <View style={{alignItems:'center'}}>
+        <Text style={{fontWeight:'800'}}>
+          {item.totalPost}
+        </Text>
+        <Text style={{fontSize:12,}}>Posts</Text>
+      </View>
+
+
+       <View style={{alignItems:'center'}}>
+        <Text style={{fontWeight:'800'}}>
+          {item.followers}
+        </Text>
+        <Text style={{fontSize:12,}}>Followers</Text>
+      </View>
+
+       <View style={{alignItems:'center',marginRight:30}}>
+        <Text style={{fontWeight:'800'}}>
+          {item.following}
+        </Text>
+        <Text style={{fontSize:12,}}>Following</Text>
+      </View>
+      </View>
+      <View style={{width:'60%',marginTop:5}}>
+        <Text style={{fontSize:12,fontWeight:'700'}}>{item.name}</Text>
+        <Text style={{fontWeight:'400',fontSize:12}}>{item.bio}</Text>
+        
+      </View>
+
+      <TouchableOpacity style={{borderWidth:1,borderColor:'#bbb',padding:5,alignItems:'center',marginTop:20,borderRadius:4,}} activeOpacity={0.9}>
+        <Text style={{fontSize:12,fontWeight:'700'}}>Edite Profile</Text>
+      </TouchableOpacity>
+      </>
+    )}
+    />
   </View>
   </>
  )}
