@@ -1,6 +1,7 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 
 
 export default function TabTwoScreen() {
@@ -115,6 +116,38 @@ export default function TabTwoScreen() {
       <TouchableOpacity style={{borderWidth:1,borderColor:'#bbb',padding:5,alignItems:'center',marginTop:20,borderRadius:4,}} activeOpacity={0.9}>
         <Text style={{fontSize:12,fontWeight:'700'}}>Edite Profile</Text>
       </TouchableOpacity>
+      
+     <ScrollView
+  style={{ marginTop: 15 }}
+  horizontal
+  showsHorizontalScrollIndicator={false}
+>
+  {item.hightlight.map((Item, index) => (
+    <View
+      key={index}
+      style={{
+        height: 70,
+        width: 70,
+        borderRadius: 35,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 10,
+      }}
+    >
+      <Image
+        source={{ uri: Item }}
+        style={{
+          height: 60,
+          width: 60,
+          borderRadius: 30,
+        }}
+      />
+    </View>
+  ))}
+</ScrollView>
+      
       </>
     )}
     />
