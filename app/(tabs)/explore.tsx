@@ -1,10 +1,16 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useState } from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 
+
+
 export default function TabTwoScreen() {
+  const [posttab,setPostTab] = useState<string>("av-icon-grid")
 
  const profileData:profileDataTypes[] = [
   {
@@ -50,6 +56,11 @@ export default function TabTwoScreen() {
   posts:string[]
 
  }
+
+
+ const postTab = ["av-icon-grid","user-square"];
+ 
+ 
 
 
 
@@ -147,6 +158,7 @@ export default function TabTwoScreen() {
     </View>
   ))}
 </ScrollView>
+ 
       
       </>
     )}
@@ -156,6 +168,37 @@ export default function TabTwoScreen() {
  )}
   />
    </View>
+   <View style={{height:0.7,backgroundColor:"#ddd",width:'100%',marginBottom:10}}/>
+
+  <View
+  style={{
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    
+  }}
+>
+  {postTab.map((item, index) => (
+    <TouchableOpacity key={index} style={{width:'50%',justifyContent:'center',alignItems:'center'}} onPress={()=>{
+      setPostTab(item);
+    }}
+    activeOpacity={0.9}
+    >
+      {index === 0 ? (
+        <Feather name="grid" size={26} style={{color:item===posttab?"#222":"#999"}} />
+      ) : (
+        <MaterialCommunityIcons
+          name="account-box-outline"
+          size={26}
+           style={{color:item===posttab?"#222":"#999"}}
+        />
+      )}
+      <View style={{height:1,backgroundColor:item===posttab?"#222":"#999",width:'100%',marginTop:5}}/>
+    </TouchableOpacity>
+    
+  ))}
+  
+</View>
+
    </>
   );
 }
