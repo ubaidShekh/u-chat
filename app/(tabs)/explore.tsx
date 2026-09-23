@@ -3,7 +3,7 @@ import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useState } from 'react';
-import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 
 
 
@@ -11,6 +11,7 @@ import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View }
 
 export default function TabTwoScreen() {
   const [posttab,setPostTab] = useState<string>("av-icon-grid")
+  const {width} = useWindowDimensions();
 
  const profileData:profileDataTypes[] = [
   {
@@ -61,6 +62,102 @@ export default function TabTwoScreen() {
  const postTab = ["av-icon-grid","user-square"];
  
  
+ interface PostType{
+    id:string,
+    image:string,
+    multiple?:boolean
+  }
+
+const explorePosts:PostType[] = [
+  {
+    id: '1',
+    image: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e',
+    multiple: true,
+  },
+  {
+    id: '2',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2',
+  },
+  {
+    id: '3',
+    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7',
+  },
+  {
+    id: '4',
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba',
+    multiple: true,
+  },
+  {
+    id: '5',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+    multiple: true,
+  },
+  {
+    id: '6',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9',
+  },
+  {
+    id: '7',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
+  },
+  {
+    id: '8',
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
+    multiple: true,
+  },
+  {
+    id: '9',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f',
+  },
+  {
+    id: '10',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
+  },
+  {
+    id: '11',
+    image: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e',
+    multiple: true,
+  },
+  {
+    id: '12',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2',
+  },
+  {
+    id: '13',
+    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7',
+  },
+  {
+    id: '14',
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba',
+    multiple: true,
+  },
+  {
+    id: '15',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+    multiple: true,
+  },
+  {
+    id: '16',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9',
+  },
+  {
+    id: '17',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
+  },
+  {
+    id: '18',
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
+    multiple: true,
+  },
+  {
+    id: '19',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f',
+  },
+  {
+    id: '0',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
+  },
+];
 
 
 
@@ -196,6 +293,25 @@ export default function TabTwoScreen() {
     </TouchableOpacity>
     
   ))}
+  
+</View>
+
+<View style={{marginTop:2}}>
+  <FlatList
+  data={explorePosts}
+  keyExtractor={(item)=>item.id}
+
+  renderItem={({item})=>(
+    <>
+    <Image 
+    source={{uri:item.image}}
+    style={{height:150,width:width/3,}}
+
+    />
+    </>
+  )}
+    numColumns={3}
+  />
   
 </View>
 

@@ -64,7 +64,7 @@ export default function TabLayout() {
          options={{
     tabBarIcon: () => (
       <Image
-        source={{ uri: 'https://i.pravatar.cc/150?img=12' }}
+        source={{ uri: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1' }}
         style={{
           width: 26,
           height: 26,
