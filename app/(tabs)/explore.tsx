@@ -2,6 +2,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 
@@ -12,6 +13,7 @@ import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, 
 export default function TabTwoScreen() {
   const [posttab,setPostTab] = useState<string>("av-icon-grid")
   const {width} = useWindowDimensions();
+  const Router = useRouter();
 
  const profileData:profileDataTypes[] = [
   {
@@ -172,7 +174,7 @@ const explorePosts:PostType[] = [
     <AntDesign name="down" size={16} color="black" />
 
    </View>
-   <AntDesign name="menu" size={24} style={{fontWeight:'600'}} />
+   <TouchableOpacity  activeOpacity={0.9} onPress={()=>{Router.push('/screen/Setings')}}><AntDesign name="menu" size={24} style={{fontWeight:'600'}} /></TouchableOpacity>
   </View>
 
   <FlatList
