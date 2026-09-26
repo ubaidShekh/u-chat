@@ -95,12 +95,29 @@ export default function Setings(){
     <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
     
     <View style={{padding:16}}>
-      <Text style={{fontWeight:'600',color:'#666',fontSize:12,letterSpacing:0.2}}>Subscriptions</Text>
-      <View>
-        <Text>Meta One</Text>
-        <Text>Not Subscribed</Text>
+      <Text style={{fontWeight:'600',color:'#666',fontSize:12,letterSpacing:0.2}}>Your insights and tools </Text>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
+       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Professional dashboared</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
       </View>
+
+       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
+       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Account types and tools</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
+      </View>
+
+       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
+       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Ads payments</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
+      </View>
+      
     </View>
+
+      {/*// devider */}
+    <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
     </>
   )
 }
