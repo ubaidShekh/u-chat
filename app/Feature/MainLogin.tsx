@@ -8,7 +8,7 @@ export default function MainLogin  (){
   <Stack.Screen options={{headerShown: false}}/>
   <StatusBar style="auto"/>
   <TouchableOpacity activeOpacity={0.9} onPress={()=>{router.back()}} style={{marginLeft:8,marginTop:45}}>
-    <Image source={require('@/assets/images/backButton.png')} style={{width: '30', height: '30', position: 'absolute',}}/>
+    <Image source={require('@/assets/images/backButton.png')} style={{width: '30', height: '30', position: 'absolute'}}/>
   </TouchableOpacity>
   <View style={styles.constainer}>
     <Image source={require('@/assets/images/title.png')} style={{width: 200, height: 65, alignSelf: 'center'}}/>

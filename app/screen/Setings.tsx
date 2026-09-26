@@ -96,6 +96,10 @@ export default function Setings(){
     
     <View style={{padding:16}}>
       <Text style={{fontWeight:'600',color:'#666',fontSize:12,letterSpacing:0.2}}>Subscriptions</Text>
+      <View>
+        <Text>Meta One</Text>
+        <Text>Not Subscribed</Text>
+      </View>
     </View>
     </>
   )
