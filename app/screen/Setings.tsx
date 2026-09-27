@@ -3,19 +3,21 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Text, TextInput, View } from 'react-native';
+import { ScrollView, Text, TextInput, View } from 'react-native';
+
 
 export default function Setings(){
   return(
     <>
-     <View style={{padding:16}}>
+   <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
+      <View style={{padding:16}}>
     <TextInput placeholder='Search ' style={{borderRadius:4,borderWidth:0.5,borderColor:'#ccc',paddingHorizontal:10,backgroundColor:'#eee'}}/>
     </View>
 
     <View style={{paddingHorizontal:16,}}>
       <Text style={{fontWeight:600,color:'#666',fontSize:12,letterSpacing:0.2}}>Your account</Text>
     </View>
-    // your account
+  {/*you content */}
     <View style={{padding:16,flexDirection:'row',alignItems:'center'}}>
       <MaterialIcons name="account-circle" size={24} color="black" />
      <View style={{flexDirection:'row'}}>
@@ -118,6 +120,94 @@ export default function Setings(){
 
       {/*// devider */}
     <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
+
+    <View style={{padding:16}}>
+      <Text style={{fontWeight:'600',color:'#666',fontSize:12}}>Who can see your content</Text>
+      <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Account Privacy</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={{fontWeight:'400',color:'#666'}}>Public</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+        
+      </View>
+
+
+       <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Close Friend</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={{fontWeight:'400',color:'#666'}}>15</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+      </View>
+
+
+        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Crossposting</Text>
+        <View style={{flexDirection:'row'}}>
+         
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+        
+      </View>
+
+
+        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Blocked</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={{fontWeight:'400',color:'#666'}}>63</Text>
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+        
+      </View>
+
+
+        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Story, live and location</Text>
+        <View style={{flexDirection:'row'}}>
+         
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+        
+      </View>
+
+
+        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
+        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Activity in friends feed</Text>
+        <View style={{flexDirection:'row'}}>
+         
+      <AntDesign name="right" size={20} color="#666" />
+
+
+        </View>
+
+        
+      </View>
+
+
+    </View>
+
+          {/*// devider */}
+    <View style={{height:4,backgroundColor:'#e9e9e9'}}/>
+
+
+
+   </ScrollView>
     </>
   )
 }
