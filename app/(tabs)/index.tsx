@@ -2,26 +2,28 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Octicons from '@expo/vector-icons/Octicons';
+import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef } from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 
 
 export default function HomeScreen() {
-const  iconColor = '#666';
-interface StoriesType {
-  id:string,
-  username:string,
-  image:string,
-  isYourStory?:boolean,
-  hasStory?:boolean,
-  isLive?:boolean,
-}
+  const router = useRouter();
+  const iconColor = '#666';
+  interface StoriesType {
+    id: string,
+    username: string,
+    image: string,
+    isYourStory?: boolean,
+    hasStory?: boolean,
+    isLive?: boolean,
+  }
 
-interface PostType{
-      id: string,
+  interface PostType {
+    id: string,
     username: string,
     profileImage: string,
     location: string,
@@ -29,103 +31,103 @@ interface PostType{
     likes: number,
     likedBy: string,
     caption: string,
-}
+  }
 
-const stories:StoriesType[] = [
-  {
-    id: '1',
-    username: 'Your Story',
-    image: 'https://i.pravatar.cc/150?img=12',
-    isYourStory: true,
-    hasStory: true,
-  },
-  {
-    id: '2',
-    username: 'karenne',
-    image: 'https://i.pravatar.cc/150?img=47',
-    hasStory: true,
-    isLive: true,
-  },
-  {
-    id: '3',
-    username: 'zackjohn',
-    image: 'https://i.pravatar.cc/150?img=11',
-    hasStory: true,
-    isLive: true,
-  },
-  {
-    id: '4',
-    username: 'kieron_d',
-    image: 'https://i.pravatar.cc/150?img=13',
-    hasStory: true,
-  },
-  {
-    id: '5',
-    username: 'craig_',
-    image: 'https://i.pravatar.cc/150?img=33',
-    hasStory: true,
-  },
-  {
-    id: '6',
-    username: 'sophia',
-    image: 'https://i.pravatar.cc/150?img=44',
-    hasStory: true,
-  },
-  {
-    id: '7',
-    username: 'alex_01',
-    image: 'https://i.pravatar.cc/150?img=52',
-    hasStory: true,
-  },
-  {
-    id: '8',
-    username: 'john_doe',
-    image: 'https://i.pravatar.cc/150?img=56',
-    hasStory: true,
-  },
-];
+  const stories: StoriesType[] = [
+    {
+      id: '1',
+      username: 'Your Story',
+      image: 'https://i.pravatar.cc/150?img=12',
+      isYourStory: true,
+      hasStory: true,
+    },
+    {
+      id: '2',
+      username: 'karenne',
+      image: 'https://i.pravatar.cc/150?img=47',
+      hasStory: true,
+      isLive: true,
+    },
+    {
+      id: '3',
+      username: 'zackjohn',
+      image: 'https://i.pravatar.cc/150?img=11',
+      hasStory: true,
+      isLive: true,
+    },
+    {
+      id: '4',
+      username: 'kieron_d',
+      image: 'https://i.pravatar.cc/150?img=13',
+      hasStory: true,
+    },
+    {
+      id: '5',
+      username: 'craig_',
+      image: 'https://i.pravatar.cc/150?img=33',
+      hasStory: true,
+    },
+    {
+      id: '6',
+      username: 'sophia',
+      image: 'https://i.pravatar.cc/150?img=44',
+      hasStory: true,
+    },
+    {
+      id: '7',
+      username: 'alex_01',
+      image: 'https://i.pravatar.cc/150?img=52',
+      hasStory: true,
+    },
+    {
+      id: '8',
+      username: 'john_doe',
+      image: 'https://i.pravatar.cc/150?img=56',
+      hasStory: true,
+    },
+  ];
 
 
-const posts:PostType[] = [
-  {
-    id: '1',
-    username: 'joshua_l',
-    profileImage: 'https://i.pravatar.cc/150?img=12',
-    location: 'Tokyo, Japan',
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf',
-    likes: 44686,
-    likedBy: 'craig_love',
-    caption: 'The game in Japan was amazing and I want to share some photos',
-  },
+  const posts: PostType[] = [
+    {
+      id: '1',
+      username: 'joshua_l',
+      profileImage: 'https://i.pravatar.cc/150?img=12',
+      location: 'Tokyo, Japan',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf',
+      likes: 44686,
+      likedBy: 'craig_love',
+      caption: 'The game in Japan was amazing and I want to share some photos',
+    },
 
-  {
-    id: '2',
-    username: 'karenne',
-    profileImage: 'https://i.pravatar.cc/150?img=47',
-    location: 'New York, USA',
-    image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e',
-    likes: 28341,
-    likedBy: 'zackjohn',
-    caption: 'Beautiful places and unforgettable moments.',
-  },
+    {
+      id: '2',
+      username: 'karenne',
+      profileImage: 'https://i.pravatar.cc/150?img=47',
+      location: 'New York, USA',
+      image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e',
+      likes: 28341,
+      likedBy: 'zackjohn',
+      caption: 'Beautiful places and unforgettable moments.',
+    },
 
-  {
-    id: '3',
-    username: 'zackjohn',
-    profileImage: 'https://i.pravatar.cc/150?img=11',
-    location: 'California, USA',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
-    likes: 15782,
-    likedBy: 'joshua_l',
-    caption: 'Nothing better than watching the sunset.',
-  },
-];
-const [showBars, setShowBars] = React.useState(true);
+    {
+      id: '3',
+      username: 'zackjohn',
+      profileImage: 'https://i.pravatar.cc/150?img=11',
+      location: 'California, USA',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
+      likes: 15782,
+      likedBy: 'joshua_l',
+      caption: 'Nothing better than watching the sunset.',
+    },
+  ];
+  const [showBars, setShowBars] = React.useState(true);
 
-const lastScrollY = useRef(0);
+  const lastScrollY = useRef(0);
 
-const handleScroll = (event:number) => {
-{/*
+  const handleScroll = (event: number) => {
+    {/*
     const currentY = event.nativeEvent.contentOffset.y;
 
   if (currentY > lastScrollY.current && currentY > 50) {
@@ -137,111 +139,111 @@ const handleScroll = (event:number) => {
   }
 
   lastScrollY.current = currentY; */}
-};
+  };
 
   return (
-  <>
-  <StatusBar style="auto" />
+    <>
+      <StatusBar style="auto" />
 
   //header
-{showBars && (<>
-<View style={styles.titleContainer}>
-  
-  <Feather name="camera" size={24} color={iconColor} />
-  <Image source={require('@/assets/images/title.png')} style={{width: 110, height: 30, alignSelf: 'center'}}/>
-  <View style={{flexDirection:'row',alignItems:'center',gap:20}}>
-    <Feather name="heart" size={24} color={iconColor} style={{ position: 'absolute',right:50}} />
-    <MaterialIcons name="send" size={24} color={iconColor} />
-  </View>
- 
- </View>
-  <View style={{height:0.5,backgroundColor:'#ccc',}}/>
-</>)}
+      {showBars && (<>
+        <View style={styles.titleContainer}>
+
+          <Feather name="camera" size={24} color={iconColor} />
+          <Image source={require('@/assets/images/title.png')} style={{ width: 110, height: 30, alignSelf: 'center' }} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+            <TouchableOpacity style={{ position: 'absolute', right: 50 }} activeOpacity={0.9} onPress={() => { router.push('/screen/Liked') }}> <Feather name="heart" size={24} color={iconColor} /></TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.9} onPress={() => { router.push('/screen/Message') }} ><MaterialIcons name="send" size={24} color={iconColor} /></TouchableOpacity>
+          </View>
+
+        </View>
+        <View style={{ height: 0.5, backgroundColor: '#ccc', }} />
+      </>)}
 
 
 
 // posts
-<FlatList
-data={posts}
-keyExtractor={(item) => item.id}
-showsVerticalScrollIndicator={false}
-bounces={false}
-//onScroll={handleScroll}
-ListHeaderComponent={<>
+      <FlatList
+        data={posts}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+        //onScroll={handleScroll}
+        ListHeaderComponent={<>
   //stories
-<FlatList 
-data={stories}
-keyExtractor={(item) => item.id}
-horizontal
-showsHorizontalScrollIndicator={false}
-bounces={false}
+          <FlatList
+            data={stories}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            bounces={false}
 
 
 
-renderItem={({item}) => (
-<>
-<View style={{padding:10,position: 'relative',}}>
-  <Image source={{ uri: item.image }} style={{ width: 70, height: 70, borderRadius: 35,  borderWidth: item.hasStory ? 2 : 0, borderColor: item.hasStory ? '#ff8501' : 'transparent',}} />
-  {item.isLive && (
-    <View style={{  backgroundColor: '#a83b3b', borderRadius: 4, paddingHorizontal: 5, paddingVertical: 2, marginTop:-10,position: 'absolute', right: 30, top: 75, }}>
-      <Text style={{ color: '#fff', fontSize: 10 }}>Live</Text>
-    </View>
-  )}
-  <Text style={{ fontSize: 12, marginTop: 10 }}>{item.username}</Text>
-  
-  mess
-</View>
+            renderItem={({ item }) => (
+              <>
+                <View style={{ padding: 10, position: 'relative', }}>
+                  <Image source={{ uri: item.image }} style={{ width: 70, height: 70, borderRadius: 35, borderWidth: item.hasStory ? 2 : 0, borderColor: item.hasStory ? '#ff8501' : 'transparent', }} />
+                  {item.isLive && (
+                    <View style={{ backgroundColor: '#a83b3b', borderRadius: 4, paddingHorizontal: 5, paddingVertical: 2, marginTop: -10, position: 'absolute', right: 30, top: 75, }}>
+                      <Text style={{ color: '#fff', fontSize: 10 }}>Live</Text>
+                    </View>
+                  )}
+                  <Text style={{ fontSize: 12, marginTop: 10 }}>{item.username}</Text>
 
- <View style={{height:1,backgroundColor:'#bbb',}}/>
+                  mess
+                </View>
 
-</>
+                <View style={{ height: 1, backgroundColor: '#bbb', }} />
 
-)}
-/>
+              </>
 
-</>}
-renderItem={({ item }) => (<>
-<View>
-<View style={{flexDirection:'row',justifyContent:'space-between',padding:10,alignItems:'center'}}>
-  <View style={{flexDirection:'row',}}>
-  <Image source={{uri:item.profileImage}} height={40} width={40} style={{borderRadius:20}}/>
-<View style={{marginLeft:6}}>
-  <Text style={{fontWeight:'600'}}>{item.username}</Text>
-  <Text style={{fontSize:11}}>{item.location}</Text>
+            )}
+          />
 
-</View>
+        </>}
+        renderItem={({ item }) => (<>
+          <View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', }}>
+                <Image source={{ uri: item.profileImage }} height={40} width={40} style={{ borderRadius: 20 }} />
+                <View style={{ marginLeft: 6 }}>
+                  <Text style={{ fontWeight: '600' }}>{item.username}</Text>
+                  <Text style={{ fontSize: 11 }}>{item.location}</Text>
 
-</View>
-<AntDesign name="ellipsis" size={22} color={iconColor} />
+                </View>
 
-</View>
+              </View>
+              <AntDesign name="ellipsis" size={22} color={iconColor} />
 
-
+            </View>
 
 
-<Image source={{uri:item.image}} style={{height:400,width:'100%'}}/>
-
-<View style={{flexDirection:'row',justifyContent:'space-between',padding:10,alignItems:'center'}}>
-  <View style={{flexDirection:'row',gap:25,alignItems:'center'}}>
-<Octicons name="heart" size={24} color={iconColor} />
-<AntDesign name="message" size={24} color={iconColor} />
- <MaterialIcons name="send" size={24} color={iconColor} />
-</View>
-<Feather name="bookmark" size={28} color={iconColor} />
-</View>
 
 
-<View style={{paddingHorizontal:10}}>
-  <Text>Liked by <Text style={{fontWeight:'600'}}>{item.likedBy}</Text> and <Text style={{fontWeight:'600'}}>{item.likes} others</Text></Text>
-<Text>{item.caption}</Text>
-</View>
+            <Image source={{ uri: item.image }} style={{ height: 400, width: '100%' }} />
 
-</View>
-</>)}
-/>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', gap: 25, alignItems: 'center' }}>
+                <Octicons name="heart" size={24} color={iconColor} />
+                <AntDesign name="message" size={24} color={iconColor} />
+                <MaterialIcons name="send" size={24} color={iconColor} />
+              </View>
+              <Feather name="bookmark" size={28} color={iconColor} />
+            </View>
 
 
- </>
+            <View style={{ paddingHorizontal: 10 }}>
+              <Text>Liked by <Text style={{ fontWeight: '600' }}>{item.likedBy}</Text> and <Text style={{ fontWeight: '600' }}>{item.likes} others</Text></Text>
+              <Text>{item.caption}</Text>
+            </View>
+
+          </View>
+        </>)}
+      />
+
+
+    </>
   );
 }
 

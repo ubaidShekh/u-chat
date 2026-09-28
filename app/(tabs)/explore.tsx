@@ -20,7 +20,7 @@ export default function TabTwoScreen() {
     id:1,
     profileImage:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
     totalPost:54,
-    followers:834,
+    followers:843 ,
     following:162,
     name:'jacob West',
     bio:'Digital goodies designer @pixsellz Everything is designed.',
@@ -205,7 +205,7 @@ const explorePosts:PostType[] = [
 
        <View style={{alignItems:'center'}}>
         <Text style={{fontWeight:'800'}}>
-          {item.followers}
+          {item.followers} k
         </Text>
         <Text style={{fontSize:12,}}>Followers</Text>
       </View>
