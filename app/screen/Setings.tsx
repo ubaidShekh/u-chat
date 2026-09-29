@@ -3,211 +3,223 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ScrollView, Text, TextInput, View } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-
-export default function Setings(){
-  return(
+export default function Setings() {
+  const router = useRouter()
+  return (
     <>
-   <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
-      <View style={{padding:16}}>
-    <TextInput placeholder='Search ' style={{borderRadius:4,borderWidth:0.5,borderColor:'#ccc',paddingHorizontal:10,backgroundColor:'#eee'}}/>
-    </View>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 16, paddingTop: 50, }}>
+        <TouchableOpacity activeOpacity={0.9} onPress={() => { router.back() }}><Feather name="arrow-left" size={24} color="black" /></TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ fontWeight: '600', letterSpacing: 0.2, marginLeft: 16 }}>Setings</Text>
 
-    <View style={{paddingHorizontal:16,}}>
-      <Text style={{fontWeight:600,color:'#666',fontSize:12,letterSpacing:0.2}}>Your account</Text>
-    </View>
-  {/*you content */}
-    <View style={{padding:16,flexDirection:'row',alignItems:'center'}}>
-      <MaterialIcons name="account-circle" size={24} color="black" />
-     <View style={{flexDirection:'row'}}>
-       
-      <View style={{paddingHorizontal:16,width:320}}>
-        <Text style={{fontWeight:'600',letterSpacing:0.2,color:'#111'}}>Accounts Center</Text>
-        <Text style={{fontSize:12,fontWeight:'500',color:'#666'}}>Password,security, personal details, connected experience,</Text>
-      </View>
-     </View>
-      <AntDesign name="right" size={20} color="#666" />
-    </View>
-{/*// devider */}
-    <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
+        </View>
 
-    {/*how you use u-chat */}
-    <View style={{padding:16}}>
-      <Text  style={{fontWeight:600,color:'#666',fontSize:12,letterSpacing:0.2,}}>How you use u-chat</Text>
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row',alignItems:'center'}}>
-<Feather name="save" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>Saved</Text>
-</View>
-
-      <AntDesign name="right" size={20} color="#666" />
 
       </View>
+      <View style={{ height: 1, backgroundColor: '#ddd', }} />
+      <ScrollView showsVerticalScrollIndicator={false} alwaysBounceVertical={false}>
+        <View style={{ padding: 16 }}>
+          <TextInput placeholder='Search ' style={{ borderRadius: 4, borderWidth: 0.5, borderColor: '#ccc', paddingHorizontal: 10, backgroundColor: '#eee' }} />
+        </View>
 
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row',alignItems:'center'}}>
-<EvilIcons name="archive" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>Archive</Text>
-</View>
+        <View style={{ paddingHorizontal: 16, }}>
+          <Text style={{ fontWeight: 600, color: '#666', fontSize: 12, letterSpacing: 0.2 }}>Your account</Text>
+        </View>
+        {/*you content */}
+        <View style={{ padding: 16, flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialIcons name="account-circle" size={24} color="black" />
+          <View style={{ flexDirection: 'row' }}>
 
-      <AntDesign name="right" size={20} color="#666" />
+            <View style={{ paddingHorizontal: 16, width: 320 }}>
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111' }}>Accounts Center</Text>
+              <Text style={{ fontSize: 12, fontWeight: '500', color: '#666' }}>Password,security, personal details, connected experience,</Text>
+            </View>
+          </View>
+          <AntDesign name="right" size={20} color="#666" />
+        </View>
+        {/*// devider */}
+        <View style={{ height: 4, backgroundColor: '#e9e9e9' }} />
 
-      </View>
+        {/*how you use u-chat */}
+        <View style={{ padding: 16 }}>
+          <Text style={{ fontWeight: 600, color: '#666', fontSize: 12, letterSpacing: 0.2, }}>How you use u-chat</Text>
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Feather name="save" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Saved</Text>
+            </View>
 
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row'}}>
-<Feather name="activity" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>Your Activity</Text>
-</View>
+            <AntDesign name="right" size={20} color="#666" />
 
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
 
-      </View>
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row',alignItems:'center'}}>
-<MaterialIcons name="notifications-none" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>Notifications</Text>
-</View>
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <EvilIcons name="archive" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Archive</Text>
+            </View>
 
-      <AntDesign name="right" size={20} color="#666" />
+            <AntDesign name="right" size={20} color="#666" />
 
-      </View>
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row',alignItems:'center'}}>
-<Ionicons name="timer-outline" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>Time management</Text>
-</View>
+          </View>
 
-      <AntDesign name="right" size={20} color="#666" />
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Feather name="activity" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Your Activity</Text>
+            </View>
 
-      </View>
-      <View style={{paddingTop:16,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<View style={{flexDirection:'row',alignItems:'center'}}>
-<Feather name="tablet" size={24} color="black" />
-<Text  style={{fontWeight:'600',letterSpacing:0.2,color:'#111',marginLeft:16}}>U-chat for tablets</Text>
-</View>
+            <AntDesign name="right" size={20} color="#666" />
 
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialIcons name="notifications-none" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Notifications</Text>
+            </View>
 
-      </View>
-    </View>
+            <AntDesign name="right" size={20} color="#666" />
 
-    {/*// devider */}
-    <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
-    
-    <View style={{padding:16}}>
-      <Text style={{fontWeight:'600',color:'#666',fontSize:12,letterSpacing:0.2}}>Your insights and tools </Text>
-      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
-       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Professional dashboared</Text>
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Ionicons name="timer-outline" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Time management</Text>
+            </View>
 
-      </View>
+            <AntDesign name="right" size={20} color="#666" />
 
-       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
-       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Account types and tools</Text>
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
+          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Feather name="tablet" size={24} color="black" />
+              <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>U-chat for tablets</Text>
+            </View>
 
-      </View>
+            <AntDesign name="right" size={20} color="#666" />
 
-       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:16}}>
-       <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Ads payments</Text>
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
+        </View>
 
-      </View>
-      
-    </View>
+        {/*// devider */}
+        <View style={{ height: 4, backgroundColor: '#e9e9e9' }} />
 
-      {/*// devider */}
-    <View style={{height:4,backgroundColor:'#e9e9e9'}}/> 
+        <View style={{ padding: 16 }}>
+          <Text style={{ fontWeight: '600', color: '#666', fontSize: 12, letterSpacing: 0.2 }}>Your insights and tools </Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Professional dashboared</Text>
+            <AntDesign name="right" size={20} color="#666" />
 
-    <View style={{padding:16}}>
-      <Text style={{fontWeight:'600',color:'#666',fontSize:12}}>Who can see your content</Text>
-      <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Account Privacy</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style={{fontWeight:'400',color:'#666'}}>Public</Text>
-      <AntDesign name="right" size={20} color="#666" />
+          </View>
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Account types and tools</Text>
+            <AntDesign name="right" size={20} color="#666" />
+
+          </View>
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Ads payments</Text>
+            <AntDesign name="right" size={20} color="#666" />
+
+          </View>
+
+        </View>
+
+        {/*// devider */}
+        <View style={{ height: 4, backgroundColor: '#e9e9e9' }} />
+
+        <View style={{ padding: 16 }}>
+          <Text style={{ fontWeight: '600', color: '#666', fontSize: 12 }}>Who can see your content</Text>
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Account Privacy</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{ fontWeight: '400', color: '#666' }}>Public</Text>
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+
+          </View>
+
+
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Close Friend</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{ fontWeight: '400', color: '#666' }}>15</Text>
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+          </View>
+
+
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Crossposting</Text>
+            <View style={{ flexDirection: 'row' }}>
+
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+
+          </View>
+
+
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Blocked</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{ fontWeight: '400', color: '#666' }}>63</Text>
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+
+          </View>
+
+
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Story, live and location</Text>
+            <View style={{ flexDirection: 'row' }}>
+
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+
+          </View>
+
+
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
+            <Text style={{ fontWeight: '600', color: '#111', letterSpacing: 0.2 }}>Activity in friends feed</Text>
+            <View style={{ flexDirection: 'row' }}>
+
+              <AntDesign name="right" size={20} color="#666" />
+
+
+            </View>
+
+
+          </View>
 
 
         </View>
 
-        
-      </View>
-
-
-       <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Close Friend</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style={{fontWeight:'400',color:'#666'}}>15</Text>
-      <AntDesign name="right" size={20} color="#666" />
-
-
-        </View>
-
-      </View>
-
-
-        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Crossposting</Text>
-        <View style={{flexDirection:'row'}}>
-         
-      <AntDesign name="right" size={20} color="#666" />
-
-
-        </View>
-
-        
-      </View>
-
-
-        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Blocked</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style={{fontWeight:'400',color:'#666'}}>63</Text>
-      <AntDesign name="right" size={20} color="#666" />
-
-
-        </View>
-
-        
-      </View>
-
-
-        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Story, live and location</Text>
-        <View style={{flexDirection:'row'}}>
-         
-      <AntDesign name="right" size={20} color="#666" />
-
-
-        </View>
-
-        
-      </View>
-
-
-        <View style={{flexDirection:'row',justifyContent:"space-between",paddingTop:16}}>
-        <Text style={{fontWeight:'600',color:'#111',letterSpacing:0.2}}>Activity in friends feed</Text>
-        <View style={{flexDirection:'row'}}>
-         
-      <AntDesign name="right" size={20} color="#666" />
-
-
-        </View>
-
-        
-      </View>
-
-
-    </View>
-
-          {/*// devider */}
-    <View style={{height:4,backgroundColor:'#e9e9e9'}}/>
+        {/*// devider */}
+        <View style={{ height: 4, backgroundColor: '#e9e9e9' }} />
 
 
 
-   </ScrollView>
+      </ScrollView>
     </>
   )
 }
