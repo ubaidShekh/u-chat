@@ -109,12 +109,18 @@ export default function Message() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <>
-            <View>
-              <Image source={{ uri: item.profileImage }} style={{ height: 100, width: 100, borderRadius: 50 }} />
-              <Text>{item.username}</Text>
-              <Text>{item.message}</Text>
-              <Text>{item.time}</Text>
-            </View>
+            <TouchableOpacity style={{ padding: 16, paddingVertical: 10, flexDirection: 'row', alignItems: 'center' }}
+              activeOpacity={0.9}
+            >
+              <Image source={{ uri: item.profileImage }} style={{ height: 60, width: 60, borderRadius: 30 }} />
+              <View style={{ marginLeft: 16 }}>
+                <Text style={{ fontWeight: '600', color: '#111' }}>{item.username}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text style={{ fontSize: 12, fontWeight: '500', color: '#666' }}>{item.message}</Text>
+                  <Text style={{ fontSize: 12, fontWeight: '500', color: '#666', marginLeft: 20 }}>{item.time}</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
           </>
         )}
       />

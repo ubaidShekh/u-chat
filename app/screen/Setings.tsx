@@ -14,8 +14,8 @@ export default function Setings() {
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 16, paddingTop: 50, }}>
         <TouchableOpacity activeOpacity={0.9} onPress={() => { router.back() }}><Feather name="arrow-left" size={24} color="black" /></TouchableOpacity>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={{ fontWeight: '600', letterSpacing: 0.2, marginLeft: 16 }}>Setings</Text>
-
+         <Text style={{ fontWeight: '600', letterSpacing: 0.2, marginLeft: 16 }}>Setings</Text>
+ 
         </View>
 
 
