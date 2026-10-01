@@ -2,12 +2,13 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Octicons from '@expo/vector-icons/Octicons';
+import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef } from 'react';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { useStore } from '../../Store/store';
 
 
 export default function HomeScreen() {
@@ -124,6 +125,7 @@ export default function HomeScreen() {
   ];
   const [showBars, setShowBars] = React.useState(true);
 
+
   const lastScrollY = useRef(0);
 
   const handleScroll = (event: number) => {
@@ -141,15 +143,42 @@ export default function HomeScreen() {
   lastScrollY.current = currentY; */}
   };
 
+  // camera access logic
+  const [permission, requestPermission] = useCameraPermissions();
+  const [cameraVisible, setCameraVisible] = React.useState(false);
+  const { width, height } = useWindowDimensions();
+  const { setVisibleTabBar, visibleTabBar } = useStore();
+
+  const openCamera = () => {
+    if (!permission?.granted) {
+      const value = requestPermission();
+    }
+    if (permission?.granted) {
+      setCameraVisible(true);
+      setVisibleTabBar(false);
+    }
+    else {
+      alert('Camera permission is required to open the camera.');
+    }
+  }
+
+
   return (
     <>
       <StatusBar style="auto" />
+
+      {cameraVisible && (
+        <>
+
+          <CameraView style={{ height: height, width: width }} facing='back' />
+        </>
+      )}
 
   //header
       {showBars && (<>
         <View style={styles.titleContainer}>
 
-          <Feather name="camera" size={24} color={iconColor} />
+          <TouchableOpacity activeOpacity={0.9} onPress={openCamera}> <Feather name="camera" size={24} color={iconColor} /></TouchableOpacity>
           <Image source={require('@/assets/images/title.png')} style={{ width: 110, height: 30, alignSelf: 'center' }} />
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
             <TouchableOpacity style={{ position: 'absolute', right: 50 }} activeOpacity={0.9} onPress={() => { router.push('/screen/Liked') }}> <Feather name="heart" size={24} color={iconColor} /></TouchableOpacity>
