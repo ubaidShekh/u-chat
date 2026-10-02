@@ -7,13 +7,17 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef } from 'react';
 
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated';
 import { useStore } from '../../Store/store';
 
 
 export default function HomeScreen() {
   const router = useRouter();
   const iconColor = '#666';
+
+  const cameraoptions: string[] = ["post", "story", "reel", "live"];
+
   interface StoriesType {
     id: string,
     username: string,
@@ -165,13 +169,25 @@ export default function HomeScreen() {
 
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar hidden />
 
       {cameraVisible && (
-        <>
+        <Modal visible={cameraVisible} animationType="slide" onRequestClose={() => { setCameraVisible(false); setVisibleTabBar(true) }} style={{ flex: 1, backgroundColor: '#000' }}>
 
-          <CameraView style={{ height: height, width: width }} facing='back' />
-        </>
+          <CameraView style={{ height: height / 1.15, width: width, borderWidth: 1, borderColor: '#ccc', borderRadius: 10, padding: 10, }} facing='back' />
+          <ScrollView>
+            {cameraoptions.map((item) => (
+              <>
+                <View key={item} style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc', }}>
+                  <Text style={{ fontSize: 18, color: '#fff' }}>{item}</Text>
+                </View>
+              </>
+
+            ))}
+          </ScrollView>
+          <Feather name="refresh-ccw" size={24} color="#111" style={{ position: 'absolute', bottom: 20, right: 20 }} />
+
+        </Modal>
       )}
 
   //header
@@ -220,7 +236,7 @@ export default function HomeScreen() {
                   )}
                   <Text style={{ fontSize: 12, marginTop: 10 }}>{item.username}</Text>
 
-                  mess
+                  <Text style={{ fontSize: 12, marginTop: 10 }}>{item.message}</Text>
                 </View>
 
                 <View style={{ height: 1, backgroundColor: '#bbb', }} />
