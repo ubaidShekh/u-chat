@@ -151,7 +151,8 @@ export default function HomeScreen() {
   const [cameraVisible, setCameraVisible] = React.useState(false);
   const { width, height } = useWindowDimensions();
   const { setVisibleTabBar, visibleTabBar } = useStore();
-
+  const camera = useStore((state) => state.camera);
+  const setCamera = useStore((state) => state.setCamera);
   const openCamera = () => {
     if (!permission?.granted) {
       const value = requestPermission();
@@ -173,18 +174,34 @@ export default function HomeScreen() {
       {cameraVisible && (
         <Modal visible={cameraVisible} animationType="slide" onRequestClose={() => { setCameraVisible(false); setVisibleTabBar(true) }} style={{ flex: 1, backgroundColor: '#000' }}>
 
-          <CameraView style={{ height: height / 1.15, width: width, borderWidth: 1, borderColor: '#ccc', borderRadius: 10, padding: 10, }} facing='back' />
+          <CameraView
+            key={camera ? 'back' : 'front'}
+            style={{ height: height / 1.15, width: width, borderWidth: 1, borderColor: '#ccc', borderRadius: 10, padding: 10, }}
+            facing={camera == true ? 'back' : 'front'}
+          />
           <ScrollView>
+
+          </ScrollView>
+          <ScrollView horizontal style={{ padding: 10, flexDirection: 'row', }} showsHorizontalScrollIndicator={false}>
             {cameraoptions.map((item) => (
               <>
-                <View key={item} style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc', }}>
-                  <Text style={{ fontSize: 18, color: '#fff' }}>{item}</Text>
+                <View key={item} style={{ padding: 10, }}>
+                  <Text style={{ fontSize: 16, fontWeight: '600', color: '#555' }}>{item}</Text>
+                  <Text style={{ fontSize: 12, color: '#555' }}>{camera == true ? "true" : "false"}</Text>
                 </View>
               </>
 
             ))}
+            <TouchableOpacity onPress={() => {
+              setCamera(!camera);
+              console.log('Camera switched to:', !camera);
+              alert('Button pressed!');
+              console.log('BUTTON PRESSED');
+
+            }} >
+              <Feather name="refresh-ccw" size={24} color="#555" style={{ position: 'absolute', bottom: 28, right: -160 }} />
+            </TouchableOpacity>
           </ScrollView>
-          <Feather name="refresh-ccw" size={24} color="#111" style={{ position: 'absolute', bottom: 20, right: 20 }} />
 
         </Modal>
       )}
