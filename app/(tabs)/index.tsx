@@ -5,7 +5,7 @@ import Octicons from '@expo/vector-icons/Octicons';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { FlatList, Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { useStore } from '../../Store/store';
@@ -147,6 +147,7 @@ export default function HomeScreen() {
   };
 
   // camera access logic
+  const [selcetOptions, setSelectOptions] = useState<String>("post");
   const [permission, requestPermission] = useCameraPermissions();
   const [cameraVisible, setCameraVisible] = React.useState(false);
   const { width, height } = useWindowDimensions();
@@ -182,13 +183,24 @@ export default function HomeScreen() {
           <ScrollView>
 
           </ScrollView>
+
+          {/*shoot button */}
+          <TouchableOpacity style={{ backgroundColor: '#555', justifyContent: 'center', alignItems: 'center', height: 70, width: 70, borderRadius: 35, position: 'absolute', bottom: 78, right: width / 2.4, borderWidth: 4, borderColor: '#968f8f' }} activeOpacity={1} >
+
+          </TouchableOpacity>
+
+
           <ScrollView horizontal style={{ padding: 10, flexDirection: 'row', }} showsHorizontalScrollIndicator={false}>
+
             {cameraoptions.map((item) => (
               <>
-                <View key={item} style={{ padding: 10, }}>
+                <TouchableOpacity key={item} style={{ padding: 10, }} activeOpacity={1} onPress={() => {
+                  setSelectOptions(item);
+                  console.log('Selected option:', item);
+                }}>
                   <Text style={{ fontSize: 16, fontWeight: '600', color: '#555' }}>{item}</Text>
-                  <Text style={{ fontSize: 12, color: '#555' }}>{camera == true ? "true" : "false"}</Text>
-                </View>
+                  <View style={{ backgroundColor: '#555', height: selcetOptions === item ? 2 : 0, width: '100%', marginTop: 5 }} />
+                </TouchableOpacity>
               </>
 
             ))}

@@ -15,7 +15,7 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { visibleTabBar } = useStore();
 
-  const [isLogedIn, setIsLoggedIn] = React.useState<boolean>(true);
+  const [isLogedIn, setIsLoggedIn] = React.useState<boolean>(false);
   if (!isLogedIn) {
     return <Login />
 
