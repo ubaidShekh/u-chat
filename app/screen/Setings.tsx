@@ -14,8 +14,8 @@ export default function Setings() {
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 16, paddingTop: 50, }}>
         <TouchableOpacity activeOpacity={0.9} onPress={() => { router.back() }}><Feather name="arrow-left" size={24} color="black" /></TouchableOpacity>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-         <Text style={{ fontWeight: '600', letterSpacing: 0.2, marginLeft: 16 }}>Setings</Text>
- 
+          <Text style={{ fontWeight: '600', letterSpacing: 0.2, marginLeft: 16 }}>Setings</Text>
+
         </View>
 
 
@@ -47,7 +47,10 @@ export default function Setings() {
         {/*how you use u-chat */}
         <View style={{ padding: 16 }}>
           <Text style={{ fontWeight: 600, color: '#666', fontSize: 12, letterSpacing: 0.2, }}>How you use u-chat</Text>
-          <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <TouchableOpacity style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
+            onPress={() => { router.push('/Feature/Saved') }}
+            activeOpacity={0.9}
+          >
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Feather name="save" size={24} color="black" />
               <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#111', marginLeft: 16 }}>Saved</Text>
@@ -55,7 +58,7 @@ export default function Setings() {
 
             <AntDesign name="right" size={20} color="#666" />
 
-          </View>
+          </TouchableOpacity>
 
           <View style={{ paddingTop: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
