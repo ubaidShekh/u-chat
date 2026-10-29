@@ -1,31 +1,32 @@
 import { Feather } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
-import { ActivityIndicator, FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, ScrollView, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 
 
 export default function Saved() {
   const router = useRouter();
+  const { width } = useWindowDimensions();
 
   const filterButtons: string[] = ["All", "Collections", "Series", "Reels", "Posts", "Audio",]
   const collections: collectionType[] = [
     {
       id: "1",
       name: "Audio",
-      coverImage: "https://example.com/audio.jpg",
+      coverImage: "https://i.pravatar.cc/150?img=12",
       privacy: "private",
       owner: null,
     },
     {
       id: "2",
       name: "Mohammad ubaid",
-      coverImage: "https://example.com/mohammad-ubaid.jpg",
+      coverImage: "https://i.pravatar.cc/150?img=47",
       privacy: "public",
       owner: "ubaid",
     },
     {
       id: "3",
       name: "A",
-      coverImage: "https://example.com/collection-a.jpg",
+      coverImage: "https://i.pravatar.cc/150?img=11",
       privacy: "public",
       owner: "ubaid",
     },
@@ -35,42 +36,42 @@ export default function Saved() {
     {
       id: "1",
       type: "reel",
-      thumbnail: "https://example.com/post-1.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=13",
       caption: "Life by the river",
       isPinned: false,
     },
     {
       id: "2",
       type: "reel",
-      thumbnail: "https://example.com/post-2.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=33",
       caption: "Traditional outfit",
       isPinned: false,
     },
     {
       id: "3",
       type: "reel",
-      thumbnail: "https://example.com/post-3.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=44",
       caption: "Reel with family moments",
       isPinned: false,
     },
     {
       id: "4",
       type: "reel",
-      thumbnail: "https://example.com/post-4.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=44",
       caption: "Beautiful moments",
       isPinned: false,
     },
     {
       id: "5",
       type: "post",
-      thumbnail: "https://example.com/post-5.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=52",
       caption: "Humse chalaki na karein, aap jeet jaayenge",
       isPinned: false,
     },
     {
       id: "6",
       type: "reel",
-      thumbnail: "https://example.com/post-6.jpg",
+      thumbnail: "https://i.pravatar.cc/150?img=56",
       caption: "Galti se apni best friend ko I love you bol diya",
       isPinned: false,
     },
@@ -150,11 +151,13 @@ export default function Saved() {
 
       <FlatList
         data={posts}
+        numColumns={3}
         keyExtractor={(item) => item.id}
+
         renderItem={({ item }) => {
           return (
             <>
-              <Image source={{ uri: item?.thumbnail }} style={{ height: 50, width: 50 }} />
+              <Image source={{ uri: item?.thumbnail }} style={{ height: 150, width: width / 3 }} />
 
             </>
           )
