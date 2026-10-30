@@ -1,11 +1,13 @@
 import { Feather } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
+import { useState } from 'react';
 import { ActivityIndicator, FlatList, Image, ScrollView, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 
 
 export default function Saved() {
   const router = useRouter();
   const { width } = useWindowDimensions();
+  const [filter, setFilter] = useState<String>("All");
 
   const filterButtons: string[] = ["All", "Collections", "Series", "Reels", "Posts", "Audio",]
   const collections: collectionType[] = [
@@ -25,7 +27,7 @@ export default function Saved() {
     },
     {
       id: "3",
-      name: "A",
+      name: "neha",
       coverImage: "https://i.pravatar.cc/150?img=11",
       privacy: "public",
       owner: "ubaid",
@@ -132,9 +134,14 @@ export default function Saved() {
         {
           filterButtons.map((item, index) => {
             return (
-              <TouchableOpacity key={index} style={{ padding: 6, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'center', height: 30, borderWidth: 1, borderColor: '#ddd', borderRadius: 20, margin: 5, alignItems: 'center', backgroundColor: '#eee' }}
+              <TouchableOpacity key={index} style={{
+                padding: 6, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'center', height: 30, borderWidth: 1, borderColor: '#ddd', borderRadius: 20, margin: 5, alignItems: 'center', backgroundColor: filter === item ? "#ddd" : "#eee"
+              }}
 
                 activeOpacity={0.9}
+                onPress={() => {
+                  setFilter(item);
+                }}
               >
 
                 <Text style={{ fontWeight: '600', letterSpacing: 0.2, color: '#000', marginLeft: 12, fontSize: 12 }}>{item}</Text>
@@ -143,12 +150,48 @@ export default function Saved() {
             )
           })
         }
-      </ScrollView>
+      </ScrollView >
       <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text style={{ fontWeight: '500' }}>Collections</Text>
         <Text style={{ fontWeight: '500', color: "#5d76f7" }}>See all</Text>
       </View>
 
+
+      <FlatList
+        data={collections}
+        numColumns={2}
+        keyExtractor={(item) => item.id}
+
+        renderItem={({ item }) => {
+          return (
+            <>
+              <Image source={{ uri: item?.coverImage }} style={{ height: 60, width: width / 6, marginTop: 10, borderRadius: 8, marginLeft: 16 }} />
+              <View>
+                <Text style={{ fontSize: 12, fontWeight: 700, color: '#111', width: width / 4, marginLeft: 10, marginTop: 10 }}>{item.name}</Text>
+                <Text style={{ fontSize: 12, fontWeight: 600, color: '#666', width: width / 4, marginLeft: 10, marginTop: 10 }}>{item?.privacy}</Text>
+                <Text style={{ fontSize: 12, fontWeight: 600, color: '#666', width: width / 4, marginLeft: 10, marginBottom: 1 }}>{item?.owner}</Text>
+
+              </View>
+
+
+
+            </>
+          )
+        }}
+        ListEmptyComponent={() => {
+          return (
+            <>
+              <ActivityIndicator size={'small'} />
+            </>
+          )
+        }}
+      />
+
+
+      <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={{ fontWeight: '500' }}>Reels and posts</Text>
+        <Text style={{ fontWeight: '500', color: "#5d76f7" }}>Manage</Text>
+      </View>
       <FlatList
         data={posts}
         numColumns={3}
