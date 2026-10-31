@@ -111,6 +111,9 @@ export default function Message() {
           <>
             <TouchableOpacity style={{ padding: 16, paddingVertical: 10, flexDirection: 'row', alignItems: 'center' }}
               activeOpacity={0.9}
+              onPress={() => {
+                router.push('/screen/ChatRoom')
+              }}
             >
               <Image source={{ uri: item.profileImage }} style={{ height: 60, width: 60, borderRadius: 30 }} />
               <View style={{ marginLeft: 16 }}>
