@@ -1,9 +1,15 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
 import Feather from '@expo/vector-icons/Feather';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Stack, useRouter } from 'expo-router';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 export default function chatRoom() {
+  const [chat, setChat] = useState<string>("");
   const router = useRouter();
   const image = 'https://i.pravatar.cc/150?img=12';
   return (
@@ -23,6 +29,41 @@ export default function chatRoom() {
 
       </View>
 
+
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <KeyboardAvoidingView style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <TouchableOpacity>
+                <Entypo name="camera" size={20} color="black" />
+              </TouchableOpacity>
+              <TextInput
+                placeholder='enter your Message'
+                value={chat}
+                //   onChangeText={setChat}
+                style={{ marginLeft: 10 }}
+
+              />
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <TouchableOpacity style={{ marginLeft: 10 }}>
+                <MaterialIcons name="keyboard-voice" size={20} color="black" />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ marginLeft: 10 }}>
+                <FontAwesome name="photo" size={20} color="black" />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ marginLeft: 10 }}>
+                <AntDesign name="plus-circle" size={20} color="black" />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ marginLeft: 10 }}>
+                <Feather name="send" size={20} color="black" />
+              </TouchableOpacity>
+            </View>
+
+          </View>
+
+        </KeyboardAvoidingView>
+      </View>
     </>
   )
 
