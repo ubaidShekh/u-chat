@@ -5,7 +5,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Stack, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 export default function chatRoom() {
@@ -13,7 +13,10 @@ export default function chatRoom() {
   const router = useRouter();
   const image = 'https://i.pravatar.cc/150?img=12';
   return (
-    <>
+    <KeyboardAvoidingView style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={0}
+    >
       <Stack.Screen options={{ headerShown: false }} />
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 16, paddingTop: 50, }}>
         <TouchableOpacity activeOpacity={0.9} onPress={() => { router.back() }}><Feather name="arrow-left" size={24} color="black" /></TouchableOpacity>
@@ -31,7 +34,7 @@ export default function chatRoom() {
 
 
       <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <KeyboardAvoidingView style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', }}>
+        <View style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <TouchableOpacity>
@@ -62,9 +65,9 @@ export default function chatRoom() {
 
           </View>
 
-        </KeyboardAvoidingView>
+        </View>
       </View>
-    </>
+    </KeyboardAvoidingView>
   )
 
 }
