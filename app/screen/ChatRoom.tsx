@@ -9,6 +9,7 @@ import { Image, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacit
 
 
 export default function chatRoom() {
+  const [chatArray, setChatArray] = useState<string[]>([]);
   const [chat, setChat] = useState<string>("");
   const router = useRouter();
   const image = 'https://i.pravatar.cc/150?img=12';
@@ -32,6 +33,20 @@ export default function chatRoom() {
 
       </View>
 
+      <View>
+        {chatArray.map((item, index) => {
+          return (
+            <>
+              <View key={index}>
+                <Text>
+                  {item}
+                </Text>
+              </View>
+            </>
+          )
+        })}
+      </View>
+
 
       <View style={{ flex: 1, justifyContent: 'flex-end' }}>
         <View style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', }}>
@@ -42,8 +57,9 @@ export default function chatRoom() {
               </TouchableOpacity>
               <TextInput
                 placeholder='enter your Message'
+                multiline
                 value={chat}
-                //   onChangeText={setChat}
+                onChangeText={setChat}
                 style={{ marginLeft: 10 }}
 
               />
@@ -58,7 +74,12 @@ export default function chatRoom() {
               <TouchableOpacity style={{ marginLeft: 10 }}>
                 <AntDesign name="plus-circle" size={20} color="black" />
               </TouchableOpacity>
-              <TouchableOpacity style={{ marginLeft: 10 }}>
+              <TouchableOpacity style={{ marginLeft: 10 }}
+                onPress={() => {
+
+                  setChatArray([...chatArray, chat])
+                  console.log(chatArray);
+                }}>
                 <Feather name="send" size={20} color="black" />
               </TouchableOpacity>
             </View>
