@@ -9,7 +9,7 @@ import { Image, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacit
 
 
 export default function chatRoom() {
-  const [chatArray, setChatArray] = useState<string[]>([]);
+  const [chatArray, setChatArray] = useState<string[]>(["hii"]);
   const [chat, setChat] = useState<string>("");
   const router = useRouter();
   const image = 'https://i.pravatar.cc/150?img=12';
@@ -37,10 +37,12 @@ export default function chatRoom() {
         {chatArray.map((item, index) => {
           return (
             <>
-              <View key={index}>
-                <Text>
-                  {item}
-                </Text>
+              <View key={index} style={{ margin: 16, borderWidth: 1, borderColor: '#ddd', borderRadius: 20, backgroundColor: '#eee' }}>
+                <View style={{ paddingHorizontal: 16, paddingVertical: 6, }}>
+                  <Text>
+                    {item}
+                  </Text>
+                </View>
               </View>
             </>
           )
@@ -79,6 +81,7 @@ export default function chatRoom() {
 
                   setChatArray([...chatArray, chat])
                   console.log(chatArray);
+                  setChat('');
                 }}>
                 <Feather name="send" size={20} color="black" />
               </TouchableOpacity>
