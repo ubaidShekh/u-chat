@@ -5,10 +5,11 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Stack, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Image, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 
 
 export default function chatRoom() {
+  const { width, height } = useWindowDimensions();
   const [chatArray, setChatArray] = useState<string[]>(["hii"]);
   const [chat, setChat] = useState<string>("");
   const router = useRouter();
@@ -33,13 +34,13 @@ export default function chatRoom() {
 
       </View>
 
-      <View>
+      <ScrollView style={{ maxHeight: height - 120 }}>
         {chatArray.map((item, index) => {
           return (
             <>
-              <View key={index} style={{ margin: 16, borderWidth: 1, borderColor: '#ddd', borderRadius: 20, backgroundColor: '#eee' }}>
-                <View style={{ paddingHorizontal: 16, paddingVertical: 6, }}>
-                  <Text>
+              <View key={index} style={{ backgroundColor: '#ddd', alignItems: 'center', maxWidth: width / 2, margin: 16, borderBottomRightRadius: 20, borderTopLeftRadius: 20 }}>
+                <View style={{ paddingHorizontal: 10, paddingVertical: 6, }}>
+                  <Text style={{ fontWeight: "600" }}>
                     {item}
                   </Text>
                 </View>
@@ -47,11 +48,11 @@ export default function chatRoom() {
             </>
           )
         })}
-      </View>
+      </ScrollView>
 
 
       <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <View style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', }}>
+        <View style={{ justifyContent: 'flex-end', flexDirection: 'column', margin: 16, padding: 10, paddingVertical: 0, borderWidth: 1, borderColor: '#666', borderRadius: 25, backgroundColor: '#eee', minHeight: 40, maxHeight: 100 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <TouchableOpacity>
@@ -77,6 +78,7 @@ export default function chatRoom() {
                 <AntDesign name="plus-circle" size={20} color="black" />
               </TouchableOpacity>
               <TouchableOpacity style={{ marginLeft: 10 }}
+
                 onPress={() => {
 
                   setChatArray([...chatArray, chat])
